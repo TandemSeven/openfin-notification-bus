@@ -1,0 +1,77 @@
+{
+  "platform": {
+    "uuid": "example_platform",
+    "applicationIcon": "https://openfin.github.io/golden-prototype/favicon.ico",
+    "autoShow": false,
+    "defaultWindowOptions": {
+      "cornerRounding": {
+        "height": 10,
+        "width": 10
+      },
+      "contextMenu": true
+    }
+  },
+  "snapshot": {
+    "windows": [
+      {
+        "defaultWidth": 600,
+        "defaultHeight": 600,
+        "layout": {
+          "content": [
+            {
+              "type": "stack",
+              "content": [
+                {
+                  "type": "component",
+                  "componentName": "view",
+                  "componentState": {
+                    "name": "component_A1",
+                    "url": "http://localhost:3000"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "defaultWidth": 600,
+        "defaultHeight": 600,
+        "defaultLeft": 200,
+        "defaultTop": 200,
+        "layout": {
+          "content": [
+            {
+              "type": "stack",
+              "content": [
+                {
+                  "type": "component",
+                  "componentName": "view",
+                  "componentState": {
+                    "name": "component_A2",
+                    "url": "http://localhost:3000/about"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "runtime": {
+    "arguments": "--v=1 --inspect",
+    "version": "stable"
+  },
+  "shortcut": {
+    "company": "OpenFin",
+    "description": "OpenFin Platforms Prototype",
+    "icon": "https://openfin.github.io/golden-prototype/favicon.ico",
+    "name": "OpenFin Platforms Prototype"
+  },
+  "services": [
+    {
+      "name": "notifications"
+    }
+  ]
+}

@@ -1,26 +1,102 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from "react-router-dom";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import './App.css';
+import {
+  addEventListener,
+  create
+} from 'openfin-notifications';
+import { Home } from './pages/Home'
+import { About } from './pages/About'
+
+const notification = {
+  // Basic info
+  title: 'Reminder',
+  body: 'Event "Weekly Meeting" is starting soon...',
+  category: 'Upcoming Events',
+
+  // We'll use the 'customData' field to store metadata about the event
+  customData: {
+    eventId: '12345'
+  },
+
+  // We want the user clicking the notification to open the associated event,
+  // so register an 'onSelect' action
+  onSelect: {
+    task: 'view-calendar-event',
+    target: 'popup'
+  },
+
+  buttons: [
+    // A button that will schedule another reminder for 5 minutes from now.
+    //Since the application will be responsible for snoozing the event,
+    //it will need to know about the user clicking this button.
+    // By setting a NotificationActionResult for 'onClick', the service
+    // will raise a "notification-action" event when this button is clicked,
+    // and will pass the value of 'onClick' as the 'result' field within the event
+    {
+      title: 'Snooze for 5 minutes',
+      iconUrl: 'https://www.example.com/timer.png',
+      onClick: {
+        task: 'schedule-reminder',
+        intervalMs: 5 * 60 * 1000
+      }
+    },
+
+    // A button that closes the notification and doesn't prompt the user
+    // about this event again. Since the application doesn't need to do
+    // anything when the user clicks this	button, we leave 'onClick'
+    // undefined rather than specifying a NotificationActionResult.
+    // This means that no action will be raised when the
+    // button is clicked, and hence no "notification-action"
+    // event will be fired
+    {
+      title: 'Dismiss',
+      iconUrl: 'https://www.example.com/cancel.png'
+    }
+  ]
+};
+
+class App extends Component {
+  constructor(props) {
+    super(props);
+
+    if (window.fin) {
+      addEventListener('notification-action', (event) => {
+        const {
+          result,
+          notification
+        } = event;
+
+        console.log(result, notification);
+      });
+    }
+}
+
+  notify = () => {
+    if(window.fin) {
+      create(notification);
+    }
+  };
+
+  render() {
+    return (
+        <Router>
+          <Switch>
+            <Route path="/about">
+              <About />
+            </Route>
+            <Route path="/">
+              <Home notify={this.notify}/>
+            </Route>
+          </Switch>
+        </Router>
+    )
+  }
 }
 
 export default App;
