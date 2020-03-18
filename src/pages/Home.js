@@ -3,8 +3,22 @@ import React from "react";
 
 export const Home = (props) => {
     const onChange = (e) => {
-        window.fin.InterApplicationBus.publish('topic', e.target.value).then(() => console.log('Published')).catch(err => console.log(err));
+        window.fin.InterApplicationBus.publish('topic', e.target.value)
+            .then(() => console.log('Published')).catch(err => console.log(err));
     };
+
+    const saveSnapshot = async () => {
+        if(window.fin) {
+            const platform = await window.fin.Platform.getCurrent();
+            const mySnapshot = await platform.getSnapshot();
+            window.localStorage.setItem('snapshot', JSON.stringify(mySnapshot));
+            alert("Snapshot Saved");
+        }
+    };
+
+    if (window.fin) {
+        props.applySnapShot();
+    }
 
     return (
         <div className="App">
@@ -19,8 +33,14 @@ export const Home = (props) => {
                 >
                     Notification
                 </button>
+                <button
+                    className="App-button"
+                    onClick={saveSnapshot}
+                >
+                    Save Snapshot
+                </button>
                 <input className="App-input-text" type="text" onChange={onChange} placeholder="Type here"/>
             </header>
         </div>
     );
-}
+};

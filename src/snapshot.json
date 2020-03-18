@@ -1,0 +1,227 @@
+{
+  "snapshotDetails": {
+    "timestamp": "3/18/2020, 5:20:57 PM",
+    "runtime": "15.80.48.13",
+    "monitorInfo": {
+      "deviceScaleFactor": 1,
+      "dpi": {
+        "x": 96,
+        "y": 96
+      },
+      "nonPrimaryMonitors": [],
+      "primaryMonitor": {
+        "available": {
+          "dipRect": {
+            "top": 23,
+            "bottom": 986,
+            "left": 0,
+            "right": 1680
+          },
+          "scaledRect": {
+            "top": 23,
+            "bottom": 986,
+            "left": 0,
+            "right": 1680
+          }
+        },
+        "availableRect": {
+          "top": 23,
+          "bottom": 986,
+          "left": 0,
+          "right": 1680
+        },
+        "deviceId": 2077750265,
+        "dpi": {},
+        "monitor": {
+          "dipRect": {
+            "top": 0,
+            "bottom": 1050,
+            "left": 0,
+            "right": 1680
+          },
+          "scaledRect": {
+            "top": 0,
+            "bottom": 1050,
+            "left": 0,
+            "right": 1680
+          }
+        },
+        "monitorRect": {
+          "top": 0,
+          "bottom": 1050,
+          "left": 0,
+          "right": 1680
+        }
+      },
+      "reason": "api-query",
+      "taskbar": {
+        "dipRect": {
+          "top": 0,
+          "bottom": 0,
+          "left": 0,
+          "right": 0
+        },
+        "edge": "left",
+        "rect": {
+          "top": 0,
+          "bottom": 0,
+          "left": 0,
+          "right": 0
+        },
+        "scaledRect": {
+          "top": 0,
+          "bottom": 0,
+          "left": 0,
+          "right": 0
+        }
+      },
+      "virtualScreen": {
+        "top": 0,
+        "bottom": 1050,
+        "left": 0,
+        "right": 1680,
+        "dipRect": {
+          "top": 0,
+          "bottom": 1050,
+          "left": 0,
+          "right": 1680
+        },
+        "scaledRect": {
+          "top": 0,
+          "bottom": 1050,
+          "left": 0,
+          "right": 1680
+        }
+      }
+    }
+  },
+  "windows": [
+    {
+      "layout": {
+        "settings": {
+          "hasHeaders": true,
+          "constrainDragToContainer": true,
+          "reorderEnabled": true,
+          "selectionEnabled": false,
+          "popoutWholeStack": false,
+          "blockedPopoutsThrowError": true,
+          "closePopoutsOnUnload": true,
+          "showPopoutIcon": false,
+          "showMaximiseIcon": false,
+          "showCloseIcon": false,
+          "responsiveMode": "onload",
+          "tabOverlapAllowance": 0,
+          "reorderOnTabMenuClick": true,
+          "tabControlOffset": 10
+        },
+        "dimensions": {
+          "borderWidth": 5,
+          "borderGrabWidth": 15,
+          "minItemHeight": 200,
+          "minItemWidth": 200,
+          "headerHeight": 20,
+          "dragProxyWidth": 300,
+          "dragProxyHeight": 200
+        },
+        "labels": {
+          "close": "close",
+          "maximise": "maximise",
+          "minimise": "minimise",
+          "popout": "open in new window",
+          "popin": "pop in",
+          "tabDropdown": "additional tabs"
+        },
+        "content": [
+          {
+            "type": "stack",
+            "isClosable": true,
+            "reorderEnabled": true,
+            "title": "",
+            "activeItemIndex": 2,
+            "content": [
+              {
+                "type": "component",
+                "componentName": "view",
+                "componentState": {
+                  "name": "home",
+                  "url": "http://localhost:3000",
+                  "preloadScripts": [],
+                  "componentName": "view",
+                  "uuid": "example_platform",
+                  "initialUrl": "http://localhost:3000"
+                },
+                "isClosable": true,
+                "reorderEnabled": true,
+                "title": "React App"
+              },
+              {
+                "type": "component",
+                "componentName": "view",
+                "componentState": {
+                  "name": "contact",
+                  "url": "http://localhost:3000/contact",
+                  "preloadScripts": [],
+                  "componentName": "view",
+                  "uuid": "example_platform",
+                  "initialUrl": "http://localhost:3000/contact"
+                },
+                "isClosable": true,
+                "reorderEnabled": true,
+                "title": "React App"
+              },
+              {
+                "type": "component",
+                "componentName": "view",
+                "componentState": {
+                  "name": "about",
+                  "url": "http://localhost:3000/about",
+                  "preloadScripts": [],
+                  "initialUrl": "http://localhost:3000/about"
+                },
+                "isClosable": true,
+                "reorderEnabled": true,
+                "title": "React App"
+              }
+            ]
+          }
+        ],
+        "isClosable": true,
+        "reorderEnabled": true,
+        "title": "",
+        "openPopouts": [],
+        "maximisedItemId": null
+      },
+      "autoShow": true,
+      "defaultCentered": false,
+      "defaultHeight": 622,
+      "defaultLeft": 10,
+      "defaultTop": 10,
+      "defaultWidth": 600,
+      "maxHeight": -1,
+      "maxWidth": -1,
+      "maximizable": true,
+      "minHeight": 0,
+      "minWidth": 0,
+      "minimizable": true,
+      "resizable": true,
+      "resizeRegion": {
+        "bottomRightCorner": 20,
+        "size": 7,
+        "sides": {
+          "top": true,
+          "right": true,
+          "bottom": true,
+          "left": true
+        }
+      },
+      "state": "normal",
+      "title": "internal-openfin-child-d2346526-8b94-404f-a141-e720bb3be9ac",
+      "height": 600,
+      "width": 600,
+      "x": 10,
+      "y": 10,
+      "frame": false,
+      "saveWindowState": false
+    }
+  ]
+}

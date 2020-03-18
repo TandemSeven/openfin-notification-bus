@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import isEqual from 'lodash/isEqual';
 import {
   BrowserRouter as Router,
   Switch,
@@ -10,9 +11,9 @@ import {
   addEventListener,
   create
 } from 'openfin-notifications';
-import { Home } from './pages/Home'
-import { About } from './pages/About'
-import { Contact } from './pages/Contact'
+import { Home } from './pages/Home';
+import { About } from './pages/About';
+import { Contact } from './pages/Contact';
 
 const notification = {
   // Basic info
@@ -64,7 +65,7 @@ const notification = {
 
 class App extends Component {
   constructor(props) {
-    super(props);
+    super(props)
 
     if (window.fin) {
       addEventListener('notification-action', (event) => {
@@ -76,7 +77,27 @@ class App extends Component {
         console.log(result, notification);
       });
     }
-}
+  }
+
+  applySnapShot = async () => {
+    const savedSnapshot = JSON.parse(window.localStorage.getItem('snapshot'));
+    if (!savedSnapshot) return;
+
+    const platform = await window.fin.Platform.getCurrent();
+    const currentSnapshot = await platform.getSnapshot();
+
+    const isSnapShotDifferent = currentSnapshot.windows.some((currentWindow, index) => {
+      if (!savedSnapshot.windows[index]) {
+        return true;
+      }
+
+      return !isEqual(currentWindow.layout.content, savedSnapshot.windows[index].layout.content)
+    });
+
+    if (isSnapShotDifferent) {
+      platform.applySnapshot(savedSnapshot, {closeExistingWindows: true});
+    }
+  };
 
   notify = () => {
     if(window.fin) {
@@ -86,19 +107,22 @@ class App extends Component {
 
   render() {
     return (
-        <Router>
-          <Switch>
-            <Route path="/about">
-              <About />
-            </Route>
-            <Route path="/contact">
-              <Contact />
-            </Route>
-            <Route path="/">
-              <Home notify={this.notify}/>
-            </Route>
-          </Switch>
-        </Router>
+      <Router>
+        <Switch>
+          <Route path="/about">
+            <About />
+          </Route>
+          <Route path="/contact">
+            <Contact />
+          </Route>
+          <Route path="/">
+            <Home
+              applySnapShot={this.applySnapShot}
+              notify={this.notify}
+            />
+          </Route>
+        </Switch>
+      </Router>
     )
   }
 }
