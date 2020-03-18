@@ -19,7 +19,10 @@ export class About extends Component {
 
     render () {
         return (
-            <h2>{this.state.text}</h2>
+            <React.Fragment>
+                <h2>Type something in the other window</h2>
+                <p>{this.state.text}</p>
+            </React.Fragment>
         );
     }
 }

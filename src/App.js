@@ -12,6 +12,7 @@ import {
 } from 'openfin-notifications';
 import { Home } from './pages/Home'
 import { About } from './pages/About'
+import { Contact } from './pages/Contact'
 
 const notification = {
   // Basic info
@@ -89,6 +90,9 @@ class App extends Component {
           <Switch>
             <Route path="/about">
               <About />
+            </Route>
+            <Route path="/contact">
+              <Contact />
             </Route>
             <Route path="/">
               <Home notify={this.notify}/>

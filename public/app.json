@@ -25,8 +25,16 @@
                   "type": "component",
                   "componentName": "view",
                   "componentState": {
-                    "name": "component_A1",
+                    "name": "home",
                     "url": "http://localhost:3000"
+                  }
+                },
+                {
+                  "type": "component",
+                  "componentName": "view",
+                  "componentState": {
+                    "name": "contact",
+                    "url": "http://localhost:3000/contact"
                   }
                 }
               ]
@@ -48,7 +56,7 @@
                   "type": "component",
                   "componentName": "view",
                   "componentState": {
-                    "name": "component_A2",
+                    "name": "about",
                     "url": "http://localhost:3000/about"
                   }
                 }
