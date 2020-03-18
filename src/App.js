@@ -65,7 +65,7 @@ const notification = {
 
 class App extends Component {
   constructor(props) {
-    super(props)
+    super(props);
 
     if (window.fin) {
       addEventListener('notification-action', (event) => {
@@ -81,11 +81,19 @@ class App extends Component {
 
   applySnapShot = async () => {
     const savedSnapshot = JSON.parse(window.localStorage.getItem('snapshot'));
-    if (!savedSnapshot) return;
+
+    // save snapshot
+    if (!savedSnapshot) {
+        const platform = await window.fin.Platform.getCurrent();
+        const mySnapshot = await platform.getSnapshot();
+        window.localStorage.setItem('snapshot', JSON.stringify(mySnapshot));
+        return;
+    }
 
     const platform = await window.fin.Platform.getCurrent();
     const currentSnapshot = await platform.getSnapshot();
 
+    // Check if savedSnapshot is different from the current and only apply snapshot if there is different
     const isSnapShotDifferent = currentSnapshot.windows.some((currentWindow, index) => {
       if (!savedSnapshot.windows[index]) {
         return true;
