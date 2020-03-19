@@ -67,6 +67,8 @@ class App extends Component {
   constructor(props) {
     super(props);
 
+    // window.localStorage.clear();
+
     if (window.fin) {
       addEventListener('notification-action', (event) => {
         const {
@@ -95,11 +97,14 @@ class App extends Component {
 
     // Check if savedSnapshot is different from the current and only apply snapshot if there is different
     const isSnapShotDifferent = currentSnapshot.windows.some((currentWindow, index) => {
-      if (!savedSnapshot.windows[index]) {
+      if (currentSnapshot.windows.length !==  savedSnapshot.windows.length) {
         return true;
       }
 
-      return !isEqual(currentWindow.layout.content, savedSnapshot.windows[index].layout.content)
+      const isContentEqual = isEqual(currentWindow.layout.content, savedSnapshot.windows[index].layout.content);
+      const isDimensionsEqual = isEqual(currentWindow.layout.dimensions, savedSnapshot.windows[index].layout.dimensions);
+
+      return !isContentEqual && !isDimensionsEqual;
     });
 
     if (isSnapShotDifferent) {
